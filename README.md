@@ -2,6 +2,8 @@
 
 It's just a Sugar syntact for the CoreData
 
+<img src="https://github.com/deda9/CoreDataExample/blob/main/image.png" width="300px"/>
+
 You can create entity 
 ```Swift
   let bezo: Person = coreDataStore.createEntity()
