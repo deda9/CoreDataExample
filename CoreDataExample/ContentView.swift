@@ -10,11 +10,20 @@ import CoreData
 
 struct ContentView: View {
     let coreDataStore: CoreDataStoring = CoreDataStore.default
+    @State var number_of_persons: Int
     
     var body: some View {
+        Text("number of persons \(number_of_persons)")
+            .padding()
+        
         Button(action: addPerson) {
             Label("Add Person", systemImage: "plus")
-        }
+        }.padding()
+        
+        Button(action: fetchPersons) {
+            Text("Fetch Persons Count")
+        }.padding()
+        
     }
     
     private func addPerson() {
@@ -33,10 +42,12 @@ struct ContentView: View {
         bezo.cars = [volksCar, bmwCar]
         coreDataStore.saveSync()
         
+        fetchPersons()
+    }
+    
+    
+    private func fetchPersons() {
         let users: [Person] = coreDataStore.fectch()
-        
-        users.forEach {
-            print($0)
-        }
+        number_of_persons = users.count
     }
 }
