@@ -34,3 +34,6 @@ Then you can fecth the data:
       print($0)
   }
 ```
+
+
+## [Tutorial Link](https://deda9.medium.com/ios-core-data-with-sugar-syntax-ef53a0e06efe)
