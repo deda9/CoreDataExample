@@ -1,42 +1,54 @@
 # CoreDataExample
 
-It's just a Sugar syntact for the CoreData
-
-
 <img src="https://github.com/deda9/CoreDataExample/blob/main/image.png" width="300px"/>
 
+## It's just a Sugar syntact for the CoreData
 
-You can create entity 
+
+## Create Entity
 ```Swift
-  let bezo: Person = coreDataStore.createEntity()
-  bezo.first_name = "Bezo"
-  bezo.last_name = "Deda"
+  private func addPerson() {
+      let bezo: Person = coreDataStore.createEntity()
+      bezo.first_name = "Bezo"
+      bezo.last_name = "Deda"
 
-  let volksCar: Car = coreDataStore.createEntity()
-  volksCar.name = "Volkswagen"
-  volksCar.owner = bezo
+      let volksCar: Car = coreDataStore.createEntity()
+      volksCar.name = "Volkswagen"
+      volksCar.owner = bezo
 
-  let bmwCar: Car = coreDataStore.createEntity()
-  bmwCar.name = "BMW"
-  bmwCar.owner = bezo
+      let bmwCar: Car = coreDataStore.createEntity()
+      bmwCar.name = "BMW"
+      bmwCar.owner = bezo
 
-  bezo.cars = [volksCar, bmwCar]
+      bezo.cars = [volksCar, bmwCar]
+  }
 ```
 
-Then you can save this entity by calling save/saveAsync:
+## Save Entity
   ```Swift
   coreDataStore.saveSync()
 
 ```
-Then you can fecth the data:
+## Fetch Entity
 ```Swift
-  let users: [Person] = coreDataStore.fectch()
+private func fetchPersons() {
+      let users: [Person] = coreDataStore.fectch()
+      message = "Fetching entities succeeded"
+      number_of_persons = users.count
 
-  users.forEach {
-      print($0)
   }
 ```
 
 
+## Delete Entity
+```Swift
+private func deleteAllPersons() {
+      let request = NSFetchRequest<NSFetchRequestResult>(entityName: Person.entityName)
+      coreDataStore.delete(request: request)
+      message = "Deleting entities succeeded"
+      number_of_persons = 0
+  }
+```
 
-- You can read the tutorial on Medium [Tutorial Link](https://deda9.medium.com/ios-core-data-with-sugar-syntax-ef53a0e06efe)
+
+You can read the tutorial on Medium [Tutorial Link](https://deda9.medium.com/ios-core-data-with-sugar-syntax-ef53a0e06efe)
