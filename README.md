@@ -2,7 +2,9 @@
 
 It's just a Sugar syntact for the CoreData
 
+
 <img src="https://github.com/deda9/CoreDataExample/blob/main/image.png" width="300px"/>
+
 
 You can create entity 
 ```Swift
@@ -36,4 +38,5 @@ Then you can fecth the data:
 ```
 
 
-## You can read the tutorial on Medium [Tutorial Link](https://deda9.medium.com/ios-core-data-with-sugar-syntax-ef53a0e06efe)
+
+- You can read the tutorial on Medium [Tutorial Link](https://deda9.medium.com/ios-core-data-with-sugar-syntax-ef53a0e06efe)
