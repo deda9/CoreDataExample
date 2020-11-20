@@ -2,7 +2,7 @@
 
 <img src="https://github.com/deda9/CoreDataExample/blob/main/image.png" width="300px"/>
 
-## It's just a Sugar syntact for the CoreData
+## It's just a Sugar Syntax for the CoreData
 
 
 ## Create Entity
