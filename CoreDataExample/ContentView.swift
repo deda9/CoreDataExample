@@ -1,18 +1,18 @@
-//
-//  ContentView.swift
-//  CoreDataExample
-//
-//  Created by Deda on 18.11.20.
-//
-
 import SwiftUI
 import CoreData
+import Combine
+
+var bag: [AnyCancellable] = []
 
 struct ContentView: View {
-    let coreDataStore: CoreDataStoring = CoreDataStore.default
-    @State var number_of_persons: Int
+    let coreDataStore: CoreDataStoring!
+    
+    @State private var number_of_persons: Int = 0
+    @State private var message: String = "None"
     
     var body: some View {
+        Text("Message")
+        Text("\(message)").foregroundColor(.green)
         Text("number of persons \(number_of_persons)")
             .padding()
         
@@ -22,6 +22,10 @@ struct ContentView: View {
         
         Button(action: fetchPersons) {
             Text("Fetch Persons Count")
+        }.padding()
+        
+        Button(action: deleteAllPersons) {
+            Text("Delte All Persons")
         }.padding()
         
     }
@@ -41,13 +45,21 @@ struct ContentView: View {
         
         bezo.cars = [volksCar, bmwCar]
         coreDataStore.saveSync()
-        
-        fetchPersons()
+        message = "Saving entities succeeded"
+        number_of_persons += 1
     }
-    
     
     private func fetchPersons() {
         let users: [Person] = coreDataStore.fectch()
+        message = "Fetching entities succeeded"
         number_of_persons = users.count
+        
+    }
+    
+    private func deleteAllPersons() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Person.entityName)
+        coreDataStore.delete(request: request)
+        message = "Deleting entities succeeded"
+        number_of_persons = 0
     }
 }

@@ -95,7 +95,24 @@ extension EntityFetching {
     }
 }
 
-protocol CoreDataStoring: EntityCreating, EntitySaving, EntityFetching {
+protocol EntityDeleting {
+    var viewContext: NSManagedObjectContext { get }
+    func delete(request: NSFetchRequest<NSFetchRequestResult>)
+}
+
+extension EntityDeleting {
+    func delete(request: NSFetchRequest<NSFetchRequestResult>) {
+        do {
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+            batchDeleteRequest.resultType = .resultTypeCount
+            try viewContext.execute(batchDeleteRequest)
+        } catch {
+            fatalError("Couldnt delete the enities " + error.localizedDescription)
+        }
+    }
+}
+
+protocol CoreDataStoring: EntityCreating, EntitySaving, EntityFetching, EntityDeleting {
     var viewContext: NSManagedObjectContext { get }
     func save()
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct CoreDataExampleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(number_of_persons: 0)
+            ContentView(coreDataStore: CoreDataStore.default)
         }
     }
 }
