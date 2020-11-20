@@ -36,4 +36,4 @@ Then you can fecth the data:
 ```
 
 
-## [Tutorial Link](https://deda9.medium.com/ios-core-data-with-sugar-syntax-ef53a0e06efe)
+## You can read the tutorial on Medium [Tutorial Link](https://deda9.medium.com/ios-core-data-with-sugar-syntax-ef53a0e06efe)
